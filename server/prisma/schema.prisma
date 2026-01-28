@@ -1,0 +1,128 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+
+model User {
+  id String @id @default(cuid())
+  username String
+  email String? @unique
+  mobileNumber String? @unique
+  isEmailVerified Boolean @default(false)
+  isMobileVerified Boolean @default(false)
+  profileUrl String?
+  role Role[]
+  notification Notification[]
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  interviewsAsInterviewer Interview[] @relation("UserAsInterviewer")
+  interviewsAsCandidate Interview[] @relation("UserAsCandidate")
+  comments Comment[]
+  sentMessages      Message[] @relation("SentMessages")
+  receivedMessages  Message[] @relation("ReceivedMessages")
+  chats       Chat[]
+}
+
+model Interview {
+  id String @id @default(cuid())
+  title String? @default("No title Provided")
+  scheduledTime DateTime
+  status InterViewStatus @default(SCHEDULED)
+  feedback Feedback?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  Comment Comment[]
+  interviewerId String
+  candidateId String
+  interviewr User @relation("UserAsInterviewer" ,fields: [interviewerId], references: [id])
+  candidate User @relation("UserAsCandidate" ,fields: [candidateId], references: [id])
+}
+
+model Feedback {
+  id String @id @default(cuid())
+  interviewId String @unique
+  rating Int
+  note String
+  interview Interview @relation(fields: [interviewId], references: [id])
+  createdAt DateTime @default(now())
+}
+
+
+model Comment {
+  id String @id @default(cuid())
+  interviewId String
+  authorId String?
+  content String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  interview Interview @relation(fields: [interviewId], references: [id])
+  author User? @relation(fields: [authorId], references: [id])
+}
+
+model Notification {
+  id String @id @default(cuid())
+  type NotificationType
+  recipientId String
+  recipient User @relation(fields: [recipientId], references: [id])
+  message String
+  status NotificationStatus @default(PENDING)
+  channel NotificationChannel @default(EMAIL)
+  createdAt DateTime @default(now())
+  sentAt DateTime?
+}
+
+model Message {
+  id String @id @default(cuid())
+  content String
+  senderId String
+  receiverId String
+  sender      User     @relation("SentMessages", fields: [senderId], references: [id])
+  recipient User @relation("ReceivedMessages", fields: [receiverId], references: [id])
+  chat      Chat     @relation(fields: [chatId], references: [id])
+  chatId    String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now())
+}
+
+model Chat {
+  id          String   @id @default(cuid())
+  participants User[] 
+  messages    Message[]
+  createdAt   DateTime @default(now())
+}
+
+enum NotificationStatus {
+PENDING
+SENT
+FAILED
+}
+
+enum NotificationChannel {
+EMAIL
+SMS
+}
+
+enum NotificationType {
+SCHEDULED
+REMINDER
+RESCHEDULE
+CANCELLATION
+}
+
+enum Role {
+  INTERVIEWER
+  CANDIDATE
+  ADMIN
+}
+
+enum InterViewStatus {
+  SCHEDULED
+  ONGOING
+  COMPLETED
+  CANCELLED
+}
