@@ -74,7 +74,7 @@ const Sidebar = () => {
           checkAuth.user?.role?.includes("INTERVIEWER")) && (
           <div
             onClick={() => setIsInterviewerOpen(!isInterviewerOpen)}
-            className="flex items-center cursor-pointer gap-3 px-8 py-3 border-b border-bahia-500 hover:bg-gray-100 dark:hover:bg-graycl-700 justify-start relative"
+            className="flex items-center cursor-pointer gap-3 px-8 py-3 border-b  border-bahia-500 transition-colors hover:bg-gray-100 dark:bg-gray-900 dark:hover:bg-gray-700 "
           >
             <UserCheck className="h-6 w-6 text-gray-800 dark:text-gray-100" />
             <span className="font-medium text-gray-800 dark:text-gray-100">

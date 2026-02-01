@@ -6,7 +6,7 @@ import { JSX } from "react";
 const ProtectedRoute = ({ children }: { children: JSX.Element }) => {
   const { isAuthenticated } = useAppSelector((state) => state.auth);
 
-  return isAuthenticated ? children : <Navigate to="/login" replace />;
+  return isAuthenticated ? children : <Navigate to="/home" replace />;
 };
 
 export default ProtectedRoute;
