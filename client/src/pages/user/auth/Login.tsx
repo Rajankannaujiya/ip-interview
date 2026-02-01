@@ -11,7 +11,7 @@ const Login = () => {
   const headingText= pathname.includes("interviewer") ? "Login to take the interviews of the candidate " :'Login to explore the exciting features of InterViewPlat';
   return (
     <CustomCenter>
-        <AuthPage headingText={headingText} formHeadEmail={'Email'} formHeadMobile={'Mobile'} />
+        <AuthPage headingText={headingText} />
     </CustomCenter>
   )
 }
