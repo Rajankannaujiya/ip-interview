@@ -1,6 +1,7 @@
 import { ReactNode } from "react";
 import { Video, ShieldCheck, Users, Sparkles, ArrowRight, Code } from "lucide-react";
 import { CustomCenter } from "../components/CustomComp";
+import { useNavigate } from "react-router-dom";
 
 export default function LandingPage() {
   const navigate = useNavigate();
