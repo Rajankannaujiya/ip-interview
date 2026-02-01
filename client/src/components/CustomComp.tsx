@@ -54,7 +54,7 @@ type ButtonProps = {
 
 export const Button = ({type, onClick, isLoading, buttonText}: ButtonProps) => {
   return (
-    <button type= {type} className="p-3 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition duration-200" 
+    <button type= {type} className="p-3 mt-4 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition duration-200" 
     onClick={onClick}>
                 {isLoading ? "Processing" : buttonText}
             </button>
