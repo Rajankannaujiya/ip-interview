@@ -10,12 +10,8 @@ import { setEmail, setIsOtpSent } from '../../state/slices/auth/verifyOtpSlice';
 // import { Role } from '../../types/user';
 import { toast } from 'react-toastify';
 
-type VerifyMode = "email" | "mobile";
-type EmailProps = {
-  setVerifyMode: React.Dispatch<React.SetStateAction<VerifyMode>>
-}
 
-const LoginEmail = ({ setVerifyMode }: EmailProps) => {
+const LoginEmail = () => {
 
   const [emailInfo, setEmailInfo] = useState("");
   const navigate = useNavigate();
@@ -48,16 +44,12 @@ const LoginEmail = ({ setVerifyMode }: EmailProps) => {
 
 
   return (
-    <form onSubmit={handleSubmit} className="flex flex-col gap-6">
+    <form onSubmit={handleSubmit} className="flex flex-col gap-1">
       <Label label='Email' />
       <Input placeHolder='Enter Your Email' setInputValue={setEmailInfo} type='email' />
       {!matchemail && <div className='flex text-red-500 text-md'>Please check ur email</div>}
 
       <Button type='submit' isLoading={isLoading} buttonText='Send Otp' />
-
-      <div className='md:hidden flex justify-center gap-2 font-serif text-lg'>
-        <CustomDivForAuth onClick={() => setVerifyMode("mobile")} buttonContent='Verify here' paraContent='Want to verify yourself with mobile number?' />
-      </div>
 
       <div className='flex justify-center items-center gap-2 font-serif text-lg'>
         <CustomDivForAuth onClick={() => navigate("/signup")} buttonContent='SingUp' paraContent={"Don't have an account?"} />

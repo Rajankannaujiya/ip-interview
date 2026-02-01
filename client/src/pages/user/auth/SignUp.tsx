@@ -11,7 +11,7 @@ const SignUp = () => {
     const headingText= pathname.includes("interviewer") ? "Take the interviews and sare your reviews here" : 'Create Account and explore the exciting features of InterViewPlat'
   return (
     <CustomCenter>
-        <AuthPage headingText={headingText} formHeadEmail={'Email'} formHeadMobile={'Mobile'} />
+        <AuthPage headingText={headingText} />
     </CustomCenter>
   )
 }

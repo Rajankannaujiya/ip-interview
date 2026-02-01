@@ -1,9 +1,10 @@
 import { ReactNode } from "react";
-import { Video, ShieldCheck, Users, Sparkles, ArrowRight, Code } from "lucide-react";
+import { Video, ShieldCheck, Users, Sparkles, ArrowRight } from "lucide-react";
 import { CustomCenter } from "../components/CustomComp";
 import { useNavigate } from "react-router-dom";
 
 export default function LandingPage() {
+
   const navigate = useNavigate();
   return (
 <CustomCenter className="flex flex-col justify-center items-center w-full min-h-screen dark:bg-dark-background bg-light-background dark:text-gray-100">
@@ -68,7 +69,6 @@ export default function LandingPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
             <Feature icon={<Video />} title="Real-Time Video" desc="Low-latency WebRTC interviews." />
-            <Feature icon={<Code />} title="Live Coding" desc="Evaluate problem-solving skills live." />
             <Feature icon={<ShieldCheck />} title="Secure Interviews" desc="End-to-end encrypted sessions." />
           </div>
         </div>

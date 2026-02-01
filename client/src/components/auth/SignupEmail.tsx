@@ -10,13 +10,7 @@ import { useAppDispatch } from '../../state/hook'
 import { toast } from 'react-toastify';
 import { setEmail, setIsOtpSent } from '../../state/slices/auth/verifyOtpSlice'
 
-type VerifyMode = "email" | "mobile";
-type SignupEmailProps = {
-  setVerifyMode: React.Dispatch<React.SetStateAction<VerifyMode>>
-
-}
-
-const SignupEmail = ({ setVerifyMode }: SignupEmailProps) => {
+const SignupEmail = () => {
 
   const [emailInfo, setEmailInfo] = useState("");
   const [userName, setUserName] = useState("");
@@ -64,7 +58,7 @@ const matchemail = emailInfo.match(emailRegex);
 
 
   return (
-    <form onSubmit={handleSubmit} className="flex flex-col gap-6">
+    <form onSubmit={handleSubmit} className="flex flex-col gap-1">
       <Label label='Email' />
       <Input placeHolder='Enter your Email' setInputValue={setEmailInfo} type='email' />
       { !matchemail && <div className='flex text-red-500 text-md'>Please check ur email</div>}
@@ -72,7 +66,7 @@ const matchemail = emailInfo.match(emailRegex);
       <Label label='UserName' />
       <Input placeHolder='Enter your username' setInputValue={setUserName} />
 
-      <Label label='Role' />
+      <Label label='Role'/>
       <select
         name="role"
         value={role}
@@ -85,10 +79,6 @@ const matchemail = emailInfo.match(emailRegex);
 
       <Button isLoading={isLoading} type='submit' buttonText={isLoading ? "Processing..." : "Send Otp"} />
 
-
-      <div className='md:hidden flex justify-center gap-2 font-serif text-lg'>
-        <CustomDivForAuth onClick={() => setVerifyMode("mobile")} buttonContent='Verify here' paraContent='Want to verify yourself with mobile number?' />
-      </div>
 
       <div className='flex justify-center items-center gap-2 font-serif text-lg'>
         <CustomDivForAuth onClick={() => {
