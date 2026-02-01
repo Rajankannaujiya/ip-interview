@@ -9,9 +9,9 @@ const GlobalChatWrapper: React.FC = () => {
   const dispatch = useAppDispatch();
 
   const chatContainerClasses = `
-    fixed bottom-4 right-4 z-[1000] transition-all duration-300 shadow-2xl m-8
+    fixed bottom-4 right-1 sm:right-4 z-[1000] transition-all duration-300 shadow-2xl m-1 sm:m-8
     ${isOpen 
-      ? 'w-[400px] h-[600px] rounded-lg' 
+      ? 'w-[300px] sm:w-[400px] h-[600px] rounded-lg' 
       : 'w-14 h-14' 
     }
   `;

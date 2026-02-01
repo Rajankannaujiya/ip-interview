@@ -39,10 +39,6 @@ const Navbar = () => {
                 </button>}
             </div>
             <div className={`flex justify-center items-center`}>
-
-                {!userState.isAuthenticated && (<div className='flex items-center mx-4 p-1 px-3 bg-bahia-400 rounded-md hover:bg-bahia-500 cursor-pointer dark:bg-bahia-600'>
-                    <button className='cursor-pointer p-1 px-2 dark:text-white tracking-widest' onClick={() => navigate("/signup")}>Signup</button>
-                </div>)}
                 {!userState.isAuthenticated && (<div className='flex items-center mx-4 p-1 px-3 bg-bahia-400 rounded-md hover:bg-bahia-500 cursor-pointer dark:bg-bahia-600'>
                     <button className='cursor-pointer p-1 px-2 dark:text-white tracking-widest' onClick={() => navigate("/login")}>login</button>
                 </div>)}

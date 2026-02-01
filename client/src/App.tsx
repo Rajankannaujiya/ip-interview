@@ -27,9 +27,12 @@ import { PublicRoute } from "./ProtectedRoutes";
 
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import LandingPage from "./landing/Landing";
 
 function App() {
   const isDarkMode = useAppSelector((state) => state.darkMode.isDarkMode);
+
+ 
 
   useEffect(() => {
     document.documentElement.classList.toggle("dark", isDarkMode);
@@ -56,6 +59,15 @@ function App() {
             element={
               <PublicRoute>
                 <SignUp />
+              </PublicRoute>
+            }
+          />
+
+          <Route
+            path="/home"
+            element={
+              <PublicRoute>
+                <LandingPage />
               </PublicRoute>
             }
           />
