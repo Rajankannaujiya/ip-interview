@@ -3,7 +3,7 @@ import { Video, ShieldCheck, Users, Sparkles, ArrowRight, Code } from "lucide-re
 import { CustomCenter } from "../components/CustomComp";
 
 export default function LandingPage() {
-
+  const navigate = useNavigate();
   return (
 <CustomCenter className="flex flex-col justify-center items-center w-full min-h-screen dark:bg-dark-background bg-light-background dark:text-gray-100">
     <div className="flex flex-col w-full lg:w-full h-[100vh] overflow-auto scrollbar-hide">
@@ -28,12 +28,12 @@ export default function LandingPage() {
             </p>
 
             <div className="mt-10">
-              <a
-                href="/signup"
+              <button
                 className="inline-flex items-center gap-2 rounded-xl bg-bahia-600 px-6 py-3 font-medium text-white hover:bg-bahia-700"
+                onClick={()=>navigate("/signup")}
               >
                 Get Started <ArrowRight size={18} />
-              </a>
+              </button>
             </div>
           </div>
 
@@ -89,12 +89,11 @@ export default function LandingPage() {
       <section className="bg-bahia-500 py-24 text-center text-white">
         <h2 className="mb-4 text-4xl font-bold">Interview Better. Hire Smarter.</h2>
         <p className="mb-10 text-lg">A professional interview experience for modern teams.</p>
-        <a
-          href="/signup"
+        <button onClick={()=>navigate("/signup")}
           className="inline-block rounded-xl bg-white px-8 py-3 font-medium text-bahia-600 hover:bg-slate-100"
         >
           Create Free Account
-        </a>
+        </button>
       </section>
 
       <footer className="bg-slate-900 py-8 text-center text-sm text-slate-400 mb-5">
